@@ -1,0 +1,33 @@
+# Create the custom README Badge for connecting to 
+name: Connection to REPL.it
+
+on: create
+
+jobs:
+  check:
+    name: Add REPL.it badge
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Look for REPL.it link
+      run: |
+        export REPL_LINK='[![Run on Repl.it](https://repl.it/badge/github/'$GITHUB_REPOSITORY')](https://repl.it/github/'$GITHUB_REPOSITORY')'
+        echo "::set-env name=REPL_LINK::$REPL_LINK"
+        if [[ -f "README.md" ]] && [[ "$REPL_LINK" != "$(head -n 1 $GITHUB_WORKSPACE/README.md)" ]]; then
+          echo "::set-env name=REPL_NEEDS_LINK::true"
+        fi
+    - name: Add a REPL.it Badge
+      run: |
+        echo -e "$REPL_LINK\n$(cat $GITHUB_WORKSPACE/README.md)" > $GITHUB_WORKSPACE/README.md
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add REPL.it Badge" -a
+      if: env.REPL_NEEDS_LINK
+    - name: Update repo's state
+      run: git pull
+      if: env.REPL_NEEDS_LINK
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      if: env.REPL_NEEDS_LINK
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
