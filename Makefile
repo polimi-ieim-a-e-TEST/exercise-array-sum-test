@@ -4,6 +4,5 @@ build:
 clean:
 	rm exercise
 
-run: build
+run: clean build
 	./exercise
-	clean
