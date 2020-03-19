@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     // Read array from input;
     int input_size = argc - 1;
     if (input_size > N || input_size <= 0) {
-        printf("figa ma sei scemo, N=%d\n", input_size);
+        printf("dimensione sbagliata, hai fornito N=%d\n", input_size);
         return -1;
     }
     for (int i = 0; i < input_size; i++) {
