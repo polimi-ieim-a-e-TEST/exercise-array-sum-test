@@ -10,6 +10,11 @@ L'obiettivo è calcolare la somma di un vettore dato in input
 
 Il programma deve ricevere in input un vettore di dimensione 0 < N <= 10 di interi positivi ()> 0), calcolarne la somma, e stamparla a schermo. Inserire il proprio codice solo nell'area delimitata del file `exercise.c`
 
+L'input vi viene fornito come sequenza di interi e salvato nell'array `array`. Il codice per fare questo c'è già, non toccatelo. 
+L'output che viene stampato a schermo deve contenere la somma del vettore. Potete stampare anche altre cose, ma deve esserci la somma del vettore per passare l'esercizio.
+
+Ad esempio, se l'input è `1 3 5 7` l'output può essere `la somma è 16`, `16`, `somma del vettore=16`, e così via, ma non `17`o `trallallà`.
+
 ### Instructions
 
 Implement your solution editing the `exercise.c` source file.  
