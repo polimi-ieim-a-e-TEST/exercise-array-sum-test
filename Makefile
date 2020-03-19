@@ -1,8 +1,9 @@
 build: 
-	gcc exercise.c -o exercise
+	clang exercise.c -o exercise
 
 clean:
 	rm exercise
 
 run: build
 	./exercise
+	clean
